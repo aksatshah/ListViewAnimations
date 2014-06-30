@@ -32,7 +32,6 @@ pom.xml.*
 release.properties
 
 .idea
-*.iml
 classes
 
 obj
