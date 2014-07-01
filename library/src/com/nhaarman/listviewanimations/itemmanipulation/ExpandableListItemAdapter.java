@@ -32,10 +32,10 @@ public abstract class ExpandableListItemAdapter<T> extends ArrayAdapter<T> imple
 
     private final Context mContext;
     private int mViewLayoutResId;
-    private final int mTitleParentResId;
-    private final int mContentParentResId;
-    private int mActionViewResId;
-    private final List<Long> mExpandedIds;
+    public final int mTitleParentResId;
+    public final int mContentParentResId;
+    public int mActionViewResId;
+    public final List<Long> mExpandedIds;
 
     private int mLimit;
 
@@ -174,7 +174,7 @@ public abstract class ExpandableListItemAdapter<T> extends ArrayAdapter<T> imple
         return view;
     }
 
-    private ViewGroup createView(final ViewGroup parent) {
+    public ViewGroup createView(final ViewGroup parent) {
         ViewGroup view;
 
         if (mViewLayoutResId == 0) {
@@ -380,7 +380,7 @@ public abstract class ExpandableListItemAdapter<T> extends ArrayAdapter<T> imple
         }
     }
 
-    private void toggle(final View contentParent) {
+    public void toggle(final View contentParent) {
         boolean isVisible = contentParent.getVisibility() == View.VISIBLE;
         boolean shouldCollapseOther = !isVisible && mLimit > 0 && mExpandedIds.size() >= mLimit;
         if (shouldCollapseOther) {
@@ -418,11 +418,11 @@ public abstract class ExpandableListItemAdapter<T> extends ArrayAdapter<T> imple
         }
     }
 
-    private class TitleViewOnClickListener implements View.OnClickListener {
+    public class TitleViewOnClickListener implements View.OnClickListener {
 
         private final View mContentParent;
 
-        private TitleViewOnClickListener(final View contentParent) {
+        public TitleViewOnClickListener(final View contentParent) {
             mContentParent = contentParent;
         }
 
@@ -432,7 +432,7 @@ public abstract class ExpandableListItemAdapter<T> extends ArrayAdapter<T> imple
         }
     }
 
-    private static class RootView extends LinearLayout {
+    public static class RootView extends LinearLayout {
 
         private ViewGroup mTitleViewGroup;
         private ViewGroup mContentViewGroup;
@@ -455,11 +455,11 @@ public abstract class ExpandableListItemAdapter<T> extends ArrayAdapter<T> imple
         }
     }
 
-    private static class ViewHolder {
-        ViewGroup titleParent;
-        ViewGroup contentParent;
-        View titleView;
-        View contentView;
+    public static class ViewHolder {
+        public ViewGroup titleParent;
+        public ViewGroup contentParent;
+        public View titleView;
+        public View contentView;
     }
 
     private static class ExpandCollapseHelper {
